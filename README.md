@@ -42,23 +42,23 @@ Also used github pages to deploy my app.
 
 ### Folder Stucture
 Now let's breakdown our `src` folder.
-src
-  api Folder
-  Components Folder
-    -Chart
-    -chartContainer
-    -metricSelection
-  Reducer
-    -heartBeat
-    -measurementData
-    -metricSelector
-    -weather
-  Sagas
-    -ApiErrors
-    -index.js
-  Store
-    -index.js
-  actions  
+-src
+ -api Folder
+  -Components Folder
+   -Chart
+   -chartContainer
+   -metricSelection
+  -Reducer
+   -heartBeat
+   -measurementData
+   -metricSelector
+   -weather
+  -Sagas
+   -ApiErrors
+   -index.js
+  -Store
+   -index.js
+  -actions  
 
 ## Final Verdict:
 I throughly enjoyed working on this app but unfotunately in a rush to complete this assesment I forget the fact that I should be committing my changes to the repo.
