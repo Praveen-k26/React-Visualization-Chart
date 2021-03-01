@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { actions } from './reducer';
+import * as actions from '../actions';
 import { Provider, createClient, useQuery } from 'urql';
 import { useGeolocation } from 'react-use';
 import LinearProgress from '@material-ui/core/LinearProgress';
-import Chip from '../../components/Chip';
-import { IState } from '../../store';
+import Chip from './Chip';
 
 const client = createClient({
   url: 'https://react.eogresources.com/graphql',
@@ -38,6 +37,7 @@ export default () => {
   );
 };
 
+
 const Weather = () => {
   const getLocation = useGeolocation();
   // Default to houston
@@ -57,12 +57,12 @@ const Weather = () => {
   const { fetching, data, error } = result;
   useEffect(() => {
     if (error) {
-      dispatch(actions.weatherApiErrorReceived({ error: error.message }));
+      dispatch({ type: actions.API_ERROR, error: error.message });
       return;
     }
     if (!data) return;
     const { getWeatherForLocation } = data;
-    dispatch(actions.weatherDataRecevied(getWeatherForLocation));
+    dispatch({ type: actions.WEATHER_DATA_RECEIVED, getWeatherForLocation });
   }, [dispatch, data, error]);
 
   if (fetching) return <LinearProgress />;
