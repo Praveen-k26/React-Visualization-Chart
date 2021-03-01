@@ -3,7 +3,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
 import { combineReducers } from 'redux-starter-kit';
 // @ts-ignore
-import sagas from './sagas'
+import sagas from '../sagas'
 // @ts-ignore
 import weatherReducer from '../reducers/weather';
 import metricReducer from "../reducers/metricSelector";
@@ -12,7 +12,6 @@ import measurementsReducer from "../reducers/measurementData";
 
 // const weather = combineReducers(reducers);
 // @ts-ignore
-export type IState = ReturnType<typeof rootReducer>;
 
 export default () => {
   const rootReducer = combineReducers({
