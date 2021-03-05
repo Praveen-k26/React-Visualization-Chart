@@ -25,7 +25,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 
 
-const subscriptionClient = new SubscriptionClient("ws://react.eogresources.com/graphql",{reconnect:true})
+const subscriptionClient = new SubscriptionClient(process.env.REACT_APP_WS_URL,{reconnect:true})
 
 const client = createClient({
     url: "https://react.eogresources.com/graphql",
