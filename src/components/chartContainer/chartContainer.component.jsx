@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 import { Provider, createClient, useQuery } from "urql";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
-// import Typography from "@material-ui/core/Typography";
 import Chart from '../chart/chart';
 import MetricSelector from '../metricSelection/metricSlector';
 

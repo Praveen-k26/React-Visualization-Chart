@@ -16,6 +16,7 @@ export default (state = initialState, action) => {
             let measurements = action.payload
 
             return measurements;
+
         default:
             return state;
     }

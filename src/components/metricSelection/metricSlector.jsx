@@ -1,17 +1,15 @@
 
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
 import FormLabel from "@material-ui/core/FormLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-import Typography from "@material-ui/core/Typography";
 import { grey } from "@material-ui/core/colors";
+import {createClient, Provider, useQuery} from "urql";
 
 const useStyles = makeStyles({
     box: {
@@ -76,41 +74,60 @@ const EOGCheckbox = withStyles({
     checked: {}
 })(props => <Checkbox color="default" {...props} />);
 
-const metricArray = [
-    {
-        value: "tubingPressure",
-        label: "Tubing Pressure",
-        color: ""
-    },
-    {
-        value: "casingPressure",
-        label: "Casing Pressure"
-    },
-    {
-        value: "oilTemp",
-        label: "Oil Temp"
-    },
-    {
-        value: "flareTemp",
-        label: "Flare Temp"
-    },
-    {
-        value: "waterTemp",
-        label: "Water Temp"
-    },
-    {
-        value: "injValveOpen",
-        label: "Inj Valve Open"
-    }
-];
+const client = createClient({
+    url: "https://react.eogresources.com/graphql"
+});
+
+const metricArrayQuery = `
+query {
+  getMetrics                                                                                                              
+}
+`;
+
+export default () => {
+    return (
+        <Provider value={client}>
+            <MetricSelector />
+        </Provider>
+    );
+};
+
 
 const MetricSelector = () => {
+    const [metricArrayRes] = useQuery({
+        query: metricArrayQuery
+    });
+    const { data, error } = metricArrayRes;
     const classes = useStyles();
     const dispatch = useDispatch();
     const selectedMetric = useSelector(
         state => state.selectedMetrics.selectedMetric
     );
-    const measurements = useSelector(state => state.measurements);
+    // const measurements = useSelector(state => state.measurements);
+
+    useEffect(
+        () => {
+            if (error) {
+                console.log(error.message);
+                return;
+            }
+            if (!data) return;
+            const arr = []
+            data.getMetrics.map((item, index) => {
+                return arr.push({value:item, label:item})
+            })
+            const result = data.getMetrics
+            Object.keys(result).map((item,index) => {
+                return console.log('Object.keys--->', result[item])
+            })
+            console.log('useEffect1-->', data.getMetrics)
+            console.log('arr test', arr)
+            data && data.getMetrics.map((x,i) => {
+                return console.log('checking Checkbo Metric Value-->', x)
+            })
+        }
+    );
+
 
     return (
         <FormControl component="fieldset" className={classes.formControl}>
@@ -118,47 +135,31 @@ const MetricSelector = () => {
                 Select metric:
             </FormLabel>
             <FormGroup className={classes.formGroup}>
-                {metricArray.map((metric, i) => {
-                    const isChecked = metric.value === selectedMetric;
+                {data ? data.getMetrics.map((metric, i) => {
+                    const isChecked = metric === selectedMetric;
                     return (
                         <Box className={classes.box} key={`metric${i}`}>
                             <FormControlLabel
                                 control={
                                     <EOGCheckbox
-                                        // checked={selectedMetrics[metric.value]}
                                         checked={isChecked}
                                         onChange={() =>
                                             dispatch({
                                                 type: "SELECT_METRIC",
-                                                payload: metric.value
+                                                payload: metric
                                             })
+
                                         }
-                                        value={metric.value}
+                                        value={metric}
                                     />
                                 }
-                                label={metric.label}
+                                label={metric}
                             />
-                            {isChecked ? (
-                                <Card className={classes.card}>
-                                    <CardContent className={classes.cardContent}>
-                                        <Typography className={classes.cardTitle}>
-                      <span className={classes[selectedMetric]}>
-                        {measurements.length ? (
-                            measurements[measurements.length - 1].value
-                        ) : (
-                            <>...</>
-                        )}
-                      </span>
-                                        </Typography>
-                                    </CardContent>
-                                </Card>
-                            ) : null}
                         </Box>
                     );
-                })}
+                }): 'NO DATA'}
             </FormGroup>
         </FormControl>
     );
 };
 
-export default MetricSelector
