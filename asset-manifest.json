@@ -1,21 +1,22 @@
 {
   "files": {
-    "main.js": "/React-Visualization-Chart/static/js/main.f69c5e4d.chunk.js",
-    "main.js.map": "/React-Visualization-Chart/static/js/main.f69c5e4d.chunk.js.map",
-    "runtime-main.js": "/React-Visualization-Chart/static/js/runtime-main.d3a152c4.js",
-    "runtime-main.js.map": "/React-Visualization-Chart/static/js/runtime-main.d3a152c4.js.map",
-    "static/css/2.5dbdccff.chunk.css": "/React-Visualization-Chart/static/css/2.5dbdccff.chunk.css",
-    "static/js/2.7f3efc42.chunk.js": "/React-Visualization-Chart/static/js/2.7f3efc42.chunk.js",
-    "static/js/2.7f3efc42.chunk.js.map": "/React-Visualization-Chart/static/js/2.7f3efc42.chunk.js.map",
+    "main.js": "/React-Visualization-Chart/static/js/main.a19ac143.chunk.js",
+    "main.js.map": "/React-Visualization-Chart/static/js/main.a19ac143.chunk.js.map",
+    "runtime-main.js": "/React-Visualization-Chart/static/js/runtime-main.823268e2.js",
+    "runtime-main.js.map": "/React-Visualization-Chart/static/js/runtime-main.823268e2.js.map",
+    "static/css/2.10583f31.chunk.css": "/React-Visualization-Chart/static/css/2.10583f31.chunk.css",
+    "static/js/2.c1c40bdb.chunk.js": "/React-Visualization-Chart/static/js/2.c1c40bdb.chunk.js",
+    "static/js/2.c1c40bdb.chunk.js.map": "/React-Visualization-Chart/static/js/2.c1c40bdb.chunk.js.map",
     "index.html": "/React-Visualization-Chart/index.html",
-    "precache-manifest.daa9eb2c4eae5ecb6ce04bd4016d023f.js": "/React-Visualization-Chart/precache-manifest.daa9eb2c4eae5ecb6ce04bd4016d023f.js",
+    "precache-manifest.99e9eb98740c5a691eaa4819d1809e74.js": "/React-Visualization-Chart/precache-manifest.99e9eb98740c5a691eaa4819d1809e74.js",
     "service-worker.js": "/React-Visualization-Chart/service-worker.js",
-    "static/css/2.5dbdccff.chunk.css.map": "/React-Visualization-Chart/static/css/2.5dbdccff.chunk.css.map"
+    "static/css/2.10583f31.chunk.css.map": "/React-Visualization-Chart/static/css/2.10583f31.chunk.css.map",
+    "static/js/2.c1c40bdb.chunk.js.LICENSE.txt": "/React-Visualization-Chart/static/js/2.c1c40bdb.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.d3a152c4.js",
-    "static/css/2.5dbdccff.chunk.css",
-    "static/js/2.7f3efc42.chunk.js",
-    "static/js/main.f69c5e4d.chunk.js"
+    "static/js/runtime-main.823268e2.js",
+    "static/css/2.10583f31.chunk.css",
+    "static/js/2.c1c40bdb.chunk.js",
+    "static/js/main.a19ac143.chunk.js"
   ]
 }
