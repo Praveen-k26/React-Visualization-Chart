@@ -1,4 +1,6 @@
-"name": "eog-react-visualization-base",
+{
+  "homepage": "http://Praveen-k26.github.io/React-Visualization-Chart",
+  "name": "eog-react-visualization-base",
   "version": "3.2.0",
   "private": true,
   "dependencies": {
